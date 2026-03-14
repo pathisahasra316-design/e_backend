@@ -1,0 +1,40 @@
+
+========================================
+  SmartStore API Test Suite
+========================================
+
+=== 1. AUTH ===
+  [PASS] Admin login (role=admin)
+  [PASS] Customer register (id=69b28a8eab46ca4287d54b71)
+  [PASS] Wrong password -> 401
+
+=== 2. PRODUCTS ===
+  [PASS] List all products (count=33)
+  [PASS] Create product (admin) (id=69b28a8eab46ca4287d54b8d)
+  [PASS] Customer cannot create product -> 403
+
+=== 3. ORDERS ===
+  [PASS] Order missing address -> rejected (status=500)
+  [PASS] Create order (id=69b28a8eab46ca4287d54b95 status=Pending)
+  [PASS] Fetch my orders (count=1 found=true)
+  [PASS] Get order by ID (status=Pending)
+  [PASS] Admin updates order to Delivered (status=Delivered)
+
+=== 4. REVIEWS & RATINGS (post-delivery) ===
+  [PASS] Review without orderId (Review submitted successfully)
+  [PASS] Review with orderId (delivered order) (Review submitted successfully)
+  [PASS] Duplicate review blocked -> 400 (You have already reviewed this product for this order)
+  [PASS] Undelivered order review blocked -> 400 (You can only review products from delivered orders)
+  [PASS] Product avg rating updated (rating=4.50 numReviews=2)
+
+=== 5. SETTINGS ===
+  [PASS] Fetch settings (gst=undefined deliveryCharge=40)
+
+=== 6. AUTH GUARDS ===
+  [PASS] No token -> 401
+  [PASS] Invalid token -> 401
+
+========================================
+  RESULTS: 19 passed, 0 failed / 19 total (100%)
+  ALL TESTS PASSED!
+========================================
